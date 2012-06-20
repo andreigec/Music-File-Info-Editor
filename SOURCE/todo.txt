@@ -1,0 +1,4 @@
+*Fixed bug where the file wasn't capitalised properly if there was a bracket at the end of the string to be changed.
+
+capital issue
+error loading files,m dont show empyty
