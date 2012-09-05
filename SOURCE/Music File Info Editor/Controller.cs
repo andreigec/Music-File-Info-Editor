@@ -28,7 +28,7 @@ namespace Music_File_Info_Editor
             cols.Add("Path");
         }
 
-        public static ListViewItem initLVI(ListViewUpdate fileList)
+        public static ListViewItem initLVI(ListView fileList)
         {
             var LVI = new ListViewItem();
 
@@ -40,14 +40,14 @@ namespace Music_File_Info_Editor
             return LVI;
         }
 
-        public static void setLVI(ListViewItem IN, String columnName, String text, ListViewUpdate fileList)
+        public static void setLVI(ListViewItem IN, String columnName, String text, ListView fileList)
         {
-            var col = fileList.GetColumnNumber(columnName);
+            var col = ListViewUpdate.GetColumnNumber(fileList,columnName);
 
             IN.SubItems[col].Text = text;
         }
 
-        public static void DropInFiles(string[] files,ListViewUpdate fileList)
+        public static void DropInFiles(string[] files, ListView fileList)
         {
             var acceptall = false;
             var nochanges = false;
@@ -154,7 +154,7 @@ namespace Music_File_Info_Editor
                 var add = true;
                 foreach (ListViewItem tt in fileList.Items)
                 {
-                    var s1 = tt.SubItems[fileList.GetColumnNumber("Path")].Text;
+                    var s1 = tt.SubItems[ListViewUpdate.GetColumnNumber(fileList, "Path")].Text;
 
                     if (s1.Equals(mf.FileName))
                     {
@@ -168,10 +168,10 @@ namespace Music_File_Info_Editor
             }
             
             RefreshInfo(fileList);
-            fileList.AutoResize();
+            ListViewUpdate.AutoResize(fileList);
         }
 
-        public static void RefreshInfo(ListViewUpdate fileList)
+        public static void RefreshInfo(ListView fileList)
         {
             foreach (ListViewItem LVI in fileList.Items)
             {
@@ -194,6 +194,11 @@ namespace Music_File_Info_Editor
 
         public static IEnumerable<Mp3File> getMP3Tags(List<ListViewItem> selectedItems)
         {
+            foreach(var l in selectedItems)
+            {
+                yield return ((Mp3File)l.Tag);
+            }
+            /*
             var count = 0;
             var max = selectedItems.Count;
             while (count < max)
@@ -215,6 +220,7 @@ namespace Music_File_Info_Editor
                 }
                 count++;
             }
+             * */
         }
     }
 }

@@ -1,3 +1,6 @@
+Version 1.8
+Fixed a crash when performing operations :(
+
 Version 1.7
 Changed to use GITHub
 

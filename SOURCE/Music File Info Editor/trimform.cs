@@ -52,7 +52,7 @@ namespace Music_File_Info_Editor
 			{
 				len = int.Parse(trimlength.Text);
 
-				newtext = ANDREICSLIB.StringUpdates.applyTrim(ex, trimfront, len);
+				newtext = ANDREICSLIB.StringUpdates.ApplyTrim(ex, trimfront, len);
 			}
 			else
 				newtext = ex;

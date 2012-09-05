@@ -13,7 +13,7 @@ namespace Music_File_Info_Editor
 
         #region licensing
         private const string AppTitle = "Music File Info Editor";
-        private const double AppVersion = 1.7;
+        private const double AppVersion = 1.8;
         private const String HelpString = "";
 
         private const String UpdatePath = "https://github.com/EvilSeven/Music-File-Info-Editor/zipball/master";
@@ -48,7 +48,7 @@ Zip Assets/ID3 Tagging © CSID3LIB (http://sourceforge.net/projects/csid3lib/)";
         private void Form1_Load(object sender, EventArgs e)
         {
             Controller.Initcols(cols);
-            fileList.InitColumnHeaders(cols);
+            ListViewUpdate.InitColumnHeaders(fileList,cols);
             loadConfig();
 
             Licensing.CreateLicense(this, HelpString, AppTitle, AppVersion, OtherText, VersionPath, UpdatePath, ChangelogPath, menuStrip1);
@@ -64,7 +64,7 @@ Zip Assets/ID3 Tagging © CSID3LIB (http://sourceforge.net/projects/csid3lib/)";
         private void refreshFilesToolStripMenuItem_Click(object sender, EventArgs e)
         {
             Controller.RefreshInfo(fileList);
-            fileList.AutoResize();
+            ListViewUpdate.AutoResize(fileList);
         }
 
         private void fileList_SelectedIndexChanged(object sender, EventArgs e)
@@ -102,8 +102,7 @@ Zip Assets/ID3 Tagging © CSID3LIB (http://sourceforge.net/projects/csid3lib/)";
             var b1 = index - 1;
 
             var two = (ListViewItem)fileList.Items[b1].Clone();
-
-            fileList.SwapIndicies(index, b1);
+            ListViewUpdate.SwapIndicies(fileList,index, b1);
 
             fileList.Items[b1].Name = two.Text;
             fileList.Items[index].Name = one.Text;
@@ -122,7 +121,7 @@ Zip Assets/ID3 Tagging © CSID3LIB (http://sourceforge.net/projects/csid3lib/)";
 
             var two = (ListViewItem)fileList.Items[b1].Clone();
 
-            fileList.SwapIndicies(index, b1);
+            ListViewUpdate.SwapIndicies(fileList, index, b1);
 
             fileList.Items[b1].Name = two.Text;
             fileList.Items[index].Name = one.Text;
@@ -154,7 +153,7 @@ Zip Assets/ID3 Tagging © CSID3LIB (http://sourceforge.net/projects/csid3lib/)";
             //select all
             if (e.KeyChar == 1)
             {
-                fileList.SelectAllItems();
+                ListViewUpdate.SelectAllItems(fileList);
             }
         }
 
@@ -200,9 +199,9 @@ Zip Assets/ID3 Tagging © CSID3LIB (http://sourceforge.net/projects/csid3lib/)";
             Controller.RefreshInfo(fileList);
         }
 
-        private List<ListViewItem> GetSelectedItems()
+        private List<ListViewItem> GetSelectedItems(ListView.SelectedListViewItemCollection slvic=null)
         {
-            return fileList.SelectedItems.Cast<ListViewItem>().ToList();  
+            return fileList.SelectedItems.Cast<ListViewItem>().ToList();
         }
 
         private void removeTextFromFrontOrBackToolStripMenuItem_Click(object sender, EventArgs e)

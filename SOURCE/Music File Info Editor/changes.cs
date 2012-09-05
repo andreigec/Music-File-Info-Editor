@@ -102,10 +102,9 @@ namespace Music_File_Info_Editor
 
         public static bool areThereDifferences(Mp3File orig, TagHandlerUpdate newData)
         {
-            var UC = new usercheck(
-                        ANDREICSLIB.DictionaryUpdates<string,string>.DictToListOfListViewItems(Music_File_Info_Editor.changes.TagHandlerToDict(orig)),
-						ANDREICSLIB.DictionaryUpdates<string, string>.DictToListOfListViewItems(newData.toDict())
-                        );
+            var UC = new usercheck(DictionaryUpdates.DictToListOfListViewItems(TagHandlerToDict(orig)),
+                DictionaryUpdates.DictToListOfListViewItems(newData.toDict()));
+
             if (UC.noChanges)
                 return false;
             
@@ -188,11 +187,8 @@ namespace Music_File_Info_Editor
                 }
                 else
                 {
-                    UC = new usercheck(
-					   ANDREICSLIB.DictionaryUpdates<string, string>.DictToListOfListViewItems(Music_File_Info_Editor.changes.TagHandlerToDict(orig)),
-					   ANDREICSLIB.DictionaryUpdates<string, string>.DictToListOfListViewItems(newData.toDict())
-                       );
-
+                    UC = new usercheck(DictionaryUpdates.DictToListOfListViewItems(TagHandlerToDict(orig)),
+                DictionaryUpdates.DictToListOfListViewItems(newData.toDict()));
                     UC.ShowDialog();
                 }
 
@@ -288,15 +284,15 @@ namespace Music_File_Info_Editor
 
                 if (TF.titleoptionb)
                 {
-                    newData.Title = ANDREICSLIB.StringUpdates.applyTrim(newData.Title, TF.isfront, TF.result);
+                    newData.Title = ANDREICSLIB.StringUpdates.ApplyTrim(newData.Title, TF.isfront, TF.result);
                 }
                 else if (TF.albumoptionb)
                 {
-                    newData.Album = ANDREICSLIB.StringUpdates.applyTrim(newData.Album, TF.isfront, TF.result);
+                    newData.Album = ANDREICSLIB.StringUpdates.ApplyTrim(newData.Album, TF.isfront, TF.result);
                 }
                 else if (TF.artistoptionb)
                 {
-                    newData.Artist = ANDREICSLIB.StringUpdates.applyTrim(newData.Artist, TF.isfront, TF.result);
+                    newData.Artist = ANDREICSLIB.StringUpdates.ApplyTrim(newData.Artist, TF.isfront, TF.result);
                 }
 
                 if (queryUserMakeChangesAndContinue(newData, MF, checkFirst) == false)

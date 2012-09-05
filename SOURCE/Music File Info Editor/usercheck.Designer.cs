@@ -1,3 +1,5 @@
+using System.Windows.Forms;
+
 namespace Music_File_Info_Editor
 {
 	partial class usercheck
@@ -31,11 +33,11 @@ namespace Music_File_Info_Editor
 			this.okbutton = new System.Windows.Forms.Button();
 			this.cancel = new System.Windows.Forms.Button();
 			this.label1 = new System.Windows.Forms.Label();
-			this.beforelist = new ANDREICSLIB.ListViewUpdate();
+			this.beforelist = new ListView();
 			this.columnHeader1 = new System.Windows.Forms.ColumnHeader();
 			this.columnHeader2 = new System.Windows.Forms.ColumnHeader();
 			this.label2 = new System.Windows.Forms.Label();
-			this.afterlist = new ANDREICSLIB.ListViewUpdate();
+            this.afterlist = new ListView();
 			this.columnHeader3 = new System.Windows.Forms.ColumnHeader();
 			this.columnHeader4 = new System.Windows.Forms.ColumnHeader();
 			this.cancelbutton = new System.Windows.Forms.Button();
@@ -157,9 +159,9 @@ namespace Music_File_Info_Editor
 		private System.Windows.Forms.Button okbutton;
 		private System.Windows.Forms.Button cancel;
 		private System.Windows.Forms.Label label1;
-		private ANDREICSLIB.ListViewUpdate beforelist;
+		private ListView beforelist;
 		private System.Windows.Forms.Label label2;
-		private ANDREICSLIB.ListViewUpdate afterlist;
+		private ListView afterlist;
 		private System.Windows.Forms.ColumnHeader columnHeader1;
 		private System.Windows.Forms.ColumnHeader columnHeader2;
 		private System.Windows.Forms.ColumnHeader columnHeader3;

@@ -1,3 +1,5 @@
+using System.Windows.Forms;
+
 namespace Music_File_Info_Editor
 {
 	partial class Form1
@@ -52,7 +54,7 @@ namespace Music_File_Info_Editor
             this.spacesAfterCommasToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.dontsave = new System.Windows.Forms.ToolStripMenuItem();
             this.itemnumber = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.fileList = new ANDREICSLIB.ListViewUpdate();
+            this.fileList = new ListView();
             this.panel2.SuspendLayout();
             this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
@@ -318,7 +320,7 @@ namespace Music_File_Info_Editor
 		}
 
 		#endregion
-		private ANDREICSLIB.ListViewUpdate fileList;
+		private ListView fileList;
 		private System.Windows.Forms.ColumnHeader itemnumber;
 		private System.Windows.Forms.Panel panel2;
 		private System.Windows.Forms.Button movedownbutton;
