@@ -102,8 +102,8 @@ namespace Music_File_Info_Editor
 
         public static bool areThereDifferences(Mp3File orig, TagHandlerUpdate newData)
         {
-            var UC = new usercheck(DictionaryUpdates.DictToListOfListViewItems(TagHandlerToDict(orig)),
-                DictionaryUpdates.DictToListOfListViewItems(newData.toDict()));
+            var UC = new usercheck(DictionaryExtras.DictToListOfListViewItems(TagHandlerToDict(orig)),
+                DictionaryExtras.DictToListOfListViewItems(newData.toDict()));
 
             if (UC.noChanges)
                 return false;
@@ -187,8 +187,8 @@ namespace Music_File_Info_Editor
                 }
                 else
                 {
-                    UC = new usercheck(DictionaryUpdates.DictToListOfListViewItems(TagHandlerToDict(orig)),
-                DictionaryUpdates.DictToListOfListViewItems(newData.toDict()));
+                    UC = new usercheck(DictionaryExtras.DictToListOfListViewItems(TagHandlerToDict(orig)),
+                DictionaryExtras.DictToListOfListViewItems(newData.toDict()));
                     UC.ShowDialog();
                 }
 
@@ -203,9 +203,9 @@ namespace Music_File_Info_Editor
 
         public static void cleanMP3(TagHandlerUpdate TH)
         {
-            TH.Title = ANDREICSLIB.StringUpdates.cleanString(TH.Title);
-            TH.Album = ANDREICSLIB.StringUpdates.cleanString(TH.Album);
-            TH.Artist = ANDREICSLIB.StringUpdates.cleanString(TH.Artist);
+            TH.Title = StringExtras.CleanString(TH.Title);
+            TH.Album = StringExtras.CleanString(TH.Album);
+            TH.Artist = StringExtras.CleanString(TH.Artist);
         }
 
         public static void autoCapitalise(IEnumerable<Mp3Lib.Mp3File> mp3s, bool checkFirst,bool capSpecials,bool spaceAfter)
@@ -223,9 +223,9 @@ namespace Music_File_Info_Editor
 
                 var orig = MF.TagHandler;
 
-				newData.Title = ANDREICSLIB.StringUpdates.ToCamelCase(newData.Title, true, CWS, spaceAfter);
-				newData.Album = ANDREICSLIB.StringUpdates.ToCamelCase(newData.Album, true, CWS, spaceAfter);
-				newData.Artist = ANDREICSLIB.StringUpdates.ToCamelCase(newData.Artist, true, CWS, spaceAfter);
+				newData.Title = StringExtras.ToCamelCase(newData.Title, true, CWS, spaceAfter);
+				newData.Album = StringExtras.ToCamelCase(newData.Album, true, CWS, spaceAfter);
+				newData.Artist = StringExtras.ToCamelCase(newData.Artist, true, CWS, spaceAfter);
 
                 if (queryUserMakeChangesAndContinue(newData, MF, checkFirst) == false)
                     return;
@@ -284,15 +284,15 @@ namespace Music_File_Info_Editor
 
                 if (TF.titleoptionb)
                 {
-                    newData.Title = ANDREICSLIB.StringUpdates.ApplyTrim(newData.Title, TF.isfront, TF.result);
+                    newData.Title = StringExtras.ApplyTrim(newData.Title, TF.isfront, TF.result);
                 }
                 else if (TF.albumoptionb)
                 {
-                    newData.Album = ANDREICSLIB.StringUpdates.ApplyTrim(newData.Album, TF.isfront, TF.result);
+                    newData.Album = StringExtras.ApplyTrim(newData.Album, TF.isfront, TF.result);
                 }
                 else if (TF.artistoptionb)
                 {
-                    newData.Artist = ANDREICSLIB.StringUpdates.ApplyTrim(newData.Artist, TF.isfront, TF.result);
+                    newData.Artist = StringExtras.ApplyTrim(newData.Artist, TF.isfront, TF.result);
                 }
 
                 if (queryUserMakeChangesAndContinue(newData, MF, checkFirst) == false)
@@ -320,15 +320,15 @@ namespace Music_File_Info_Editor
 
                 if (AF.titleoptionb)
                 {
-                    newData.Title = ANDREICSLIB.StringUpdates.addText(newData.Title,AF.result, AF.isfront );
+                    newData.Title = StringExtras.AddText(newData.Title,AF.result, AF.isfront );
                 }
                 else if (AF.albumoptionb)
                 {
-                    newData.Album = ANDREICSLIB.StringUpdates.addText(newData.Album,AF.result, AF.isfront);
+                    newData.Album = StringExtras.AddText(newData.Album,AF.result, AF.isfront);
                 }
                 else if (AF.artistoptionb)
                 {
-                    newData.Artist = ANDREICSLIB.StringUpdates.addText(newData.Artist,AF.result, AF.isfront);
+                    newData.Artist = StringExtras.AddText(newData.Artist,AF.result, AF.isfront);
                 }
 
                 if (queryUserMakeChangesAndContinue(newData, MF, checkFirst) == false)
@@ -357,15 +357,15 @@ namespace Music_File_Info_Editor
 
                 if (RC.titleoptionb)
                 {
-                    newData.Title = ANDREICSLIB.StringUpdates.replaceAllChars(newData.Title, RC.result1, RC.result2);
+                    newData.Title = StringExtras.ReplaceAllChars(newData.Title, RC.result1, RC.result2);
                 }
                 else if (RC.albumoptionb)
                 {
-                    newData.Album = ANDREICSLIB.StringUpdates.replaceAllChars(newData.Album, RC.result1, RC.result2);
+                    newData.Album = StringExtras.ReplaceAllChars(newData.Album, RC.result1, RC.result2);
                 }
                 else if (RC.artistoptionb)
                 {
-                    newData.Artist = ANDREICSLIB.StringUpdates.replaceAllChars(newData.Artist, RC.result1, RC.result2);
+                    newData.Artist = StringExtras.ReplaceAllChars(newData.Artist, RC.result1, RC.result2);
                 }
 
                 if (queryUserMakeChangesAndContinue(newData, MF, checkFirst) == false)

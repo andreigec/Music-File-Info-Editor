@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Windows.Forms;
 using ANDREICSLIB;
+using Music_File_Info_Editor.ServiceReference1;
 
 namespace Music_File_Info_Editor
 {
@@ -13,12 +14,8 @@ namespace Music_File_Info_Editor
 
         #region licensing
         private const string AppTitle = "Music File Info Editor";
-        private const double AppVersion = 1.8;
+        private const double AppVersion = 1.9;
         private const String HelpString = "";
-
-        private const String UpdatePath = "https://github.com/EvilSeven/Music-File-Info-Editor/zipball/master";
-        private const String VersionPath = "https://raw.github.com/EvilSeven/Music-File-Info-Editor/master/INFO/version.txt";
-        private const String ChangelogPath = "https://raw.github.com/EvilSeven/Music-File-Info-Editor/master/INFO/changelog.txt";
 
         private readonly String OtherText =
             @"©" + DateTime.Now.Year +
@@ -48,10 +45,37 @@ Zip Assets/ID3 Tagging © CSID3LIB (http://sourceforge.net/projects/csid3lib/)";
         private void Form1_Load(object sender, EventArgs e)
         {
             Controller.Initcols(cols);
-            ListViewUpdate.InitColumnHeaders(fileList,cols);
+            ListViewExtras.InitColumnHeaders(fileList,cols);
             loadConfig();
 
-            Licensing.CreateLicense(this, HelpString, AppTitle, AppVersion, OtherText, VersionPath, UpdatePath, ChangelogPath, menuStrip1);
+            Licensing.CreateLicense(this, menuStrip1, new Licensing.SolutionDetails(GetDetails, HelpString, AppTitle, AppVersion, OtherText));
+        }
+
+        public Licensing.DownloadedSolutionDetails GetDetails()
+        {
+            try
+            {
+                var sr = new ServicesClient();
+                var ti = sr.GetTitleInfo(AppTitle);
+                if (ti == null)
+                    return null;
+                return ToDownloadedSolutionDetails(ti);
+
+            }
+            catch (Exception)
+            {
+            }
+            return null;
+        }
+
+        public static Licensing.DownloadedSolutionDetails ToDownloadedSolutionDetails(TitleInfoServiceModel tism)
+        {
+            return new Licensing.DownloadedSolutionDetails()
+            {
+                ZipFileLocation = tism.LatestTitleDownloadPath,
+                ChangeLog = tism.LatestTitleChangelog,
+                Version = tism.LatestTitleVersion
+            };
         }
 
         
@@ -64,7 +88,7 @@ Zip Assets/ID3 Tagging © CSID3LIB (http://sourceforge.net/projects/csid3lib/)";
         private void refreshFilesToolStripMenuItem_Click(object sender, EventArgs e)
         {
             Controller.RefreshInfo(fileList);
-            ListViewUpdate.AutoResize(fileList);
+            ListViewExtras.AutoResize(fileList);
         }
 
         private void fileList_SelectedIndexChanged(object sender, EventArgs e)
@@ -102,7 +126,7 @@ Zip Assets/ID3 Tagging © CSID3LIB (http://sourceforge.net/projects/csid3lib/)";
             var b1 = index - 1;
 
             var two = (ListViewItem)fileList.Items[b1].Clone();
-            ListViewUpdate.SwapIndicies(fileList,index, b1);
+            ListViewExtras.SwapIndicies(fileList,index, b1);
 
             fileList.Items[b1].Name = two.Text;
             fileList.Items[index].Name = one.Text;
@@ -121,7 +145,7 @@ Zip Assets/ID3 Tagging © CSID3LIB (http://sourceforge.net/projects/csid3lib/)";
 
             var two = (ListViewItem)fileList.Items[b1].Clone();
 
-            ListViewUpdate.SwapIndicies(fileList, index, b1);
+            ListViewExtras.SwapIndicies(fileList, index, b1);
 
             fileList.Items[b1].Name = two.Text;
             fileList.Items[index].Name = one.Text;
@@ -153,7 +177,7 @@ Zip Assets/ID3 Tagging © CSID3LIB (http://sourceforge.net/projects/csid3lib/)";
             //select all
             if (e.KeyChar == 1)
             {
-                ListViewUpdate.SelectAllItems(fileList);
+                ListViewExtras.SelectAllItems(fileList);
             }
         }
 

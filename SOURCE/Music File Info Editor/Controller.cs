@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading;
 using System.Windows.Forms;
 using ANDREICSLIB;
+using ANDREICSLIB.NewControls;
 using Mp3Lib;
 
 namespace Music_File_Info_Editor
@@ -42,7 +43,7 @@ namespace Music_File_Info_Editor
 
         public static void setLVI(ListViewItem IN, String columnName, String text, ListView fileList)
         {
-            var col = ListViewUpdate.GetColumnNumber(fileList,columnName);
+            var col = ListViewExtras.GetColumnNumber(fileList,columnName);
 
             IN.SubItems[col].Text = text;
         }
@@ -154,7 +155,7 @@ namespace Music_File_Info_Editor
                 var add = true;
                 foreach (ListViewItem tt in fileList.Items)
                 {
-                    var s1 = tt.SubItems[ListViewUpdate.GetColumnNumber(fileList, "Path")].Text;
+                    var s1 = tt.SubItems[ListViewExtras.GetColumnNumber(fileList, "Path")].Text;
 
                     if (s1.Equals(mf.FileName))
                     {
@@ -168,7 +169,7 @@ namespace Music_File_Info_Editor
             }
             
             RefreshInfo(fileList);
-            ListViewUpdate.AutoResize(fileList);
+            ListViewExtras.AutoResize(fileList);
         }
 
         public static void RefreshInfo(ListView fileList)

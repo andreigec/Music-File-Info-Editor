@@ -5,6 +5,7 @@ using System.Data;
 using System.Drawing;
 using System.Text;
 using System.Windows.Forms;
+using ANDREICSLIB;
 
 namespace Music_File_Info_Editor
 {
@@ -52,7 +53,7 @@ namespace Music_File_Info_Editor
 			{
 				len = int.Parse(trimlength.Text);
 
-				newtext = ANDREICSLIB.StringUpdates.ApplyTrim(ex, trimfront, len);
+				newtext = StringExtras.ApplyTrim(ex, trimfront, len);
 			}
 			else
 				newtext = ex;

@@ -47,8 +47,8 @@ namespace Music_File_Info_Editor
 				this.Close();
 				return;
 			}
-            ListViewUpdate.AutoResize(afterlist);
-            ListViewUpdate.AutoResize(beforelist);
+            ListViewExtras.AutoResize(afterlist);
+            ListViewExtras.AutoResize(beforelist);
 
 		}
 

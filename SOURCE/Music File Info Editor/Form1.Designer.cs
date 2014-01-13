@@ -54,7 +54,7 @@ namespace Music_File_Info_Editor
             this.spacesAfterCommasToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.dontsave = new System.Windows.Forms.ToolStripMenuItem();
             this.itemnumber = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.fileList = new ListView();
+            this.fileList = new System.Windows.Forms.ListView();
             this.panel2.SuspendLayout();
             this.menuStrip1.SuspendLayout();
             this.SuspendLayout();

@@ -54,13 +54,21 @@
     <CodeAnalysisRuleSet>AllRules.ruleset</CodeAnalysisRuleSet>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="Id3Lib, Version=0.3.0.0, Culture=neutral, processorArchitecture=MSIL" />
-    <Reference Include="Mp3Lib, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL" />
+    <Reference Include="Id3Lib, Version=0.5.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>.\Id3Lib.dll</HintPath>
+    </Reference>
+    <Reference Include="Mp3Lib, Version=0.5.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>.\Mp3Lib.dll</HintPath>
+    </Reference>
     <Reference Include="SharpZipLib, Version=0.4.0.0, Culture=neutral, PublicKeyToken=fbebc9694da332b7" />
     <Reference Include="System" />
     <Reference Include="System.Data" />
     <Reference Include="System.Deployment" />
     <Reference Include="System.Drawing" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.ServiceModel" />
     <Reference Include="System.Windows.Forms" />
     <Reference Include="System.Xml" />
   </ItemGroup>
@@ -109,6 +117,7 @@
       <DesignTime>True</DesignTime>
     </Compile>
     <None Include="app.config" />
+    <Fakes Include="Fakes\Id3Lib.fakes" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
@@ -124,6 +133,11 @@
     <Compile Include="replacechar.Designer.cs">
       <DependentUpon>replacechar.cs</DependentUpon>
     </Compile>
+    <Compile Include="Service References\ServiceReference1\Reference.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Compile>
     <Compile Include="trimform.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -136,10 +150,30 @@
     <Compile Include="usercheck.Designer.cs">
       <DependentUpon>usercheck.cs</DependentUpon>
     </Compile>
+    <None Include="Service References\ServiceReference1\Music_File_Info_Editor.ServiceReference1.TitleInfoServiceModel.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\ServiceReference1\Services.wsdl" />
+    <None Include="Service References\ServiceReference1\Services.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\ServiceReference1\Services1.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\ServiceReference1\Services2.xsd">
+      <SubType>Designer</SubType>
+    </None>
   </ItemGroup>
   <ItemGroup>
     <Content Include="Id3Lib.dll" />
     <Content Include="Mp3Lib.dll" />
+    <None Include="Service References\ServiceReference1\Services.disco" />
+    <None Include="Service References\ServiceReference1\configuration91.svcinfo" />
+    <None Include="Service References\ServiceReference1\configuration.svcinfo" />
+    <None Include="Service References\ServiceReference1\Reference.svcmap">
+      <Generator>WCF Proxy Generator</Generator>
+      <LastGenOutput>Reference.cs</LastGenOutput>
+    </None>
     <Content Include="SharpZipLib.dll" />
   </ItemGroup>
   <ItemGroup>
@@ -164,6 +198,12 @@
       <Project>{469B8120-B6D8-48BD-97C4-AFAB63AEE304}</Project>
       <Name>ANDREICSLIB</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <WCFMetadata Include="Service References\" />
+  </ItemGroup>
+  <ItemGroup>
+    <WCFMetadataStorage Include="Service References\ServiceReference1\" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
