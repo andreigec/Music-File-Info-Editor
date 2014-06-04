@@ -9,6 +9,6 @@ Can perform the following in 1 click:
 
 Images
 ======
-![MFIE1](https://github.com/EvilSeven/Music-File-Info-Editor/raw/master/INFO/MFIE.PNG)
+![MFIE1](https://s3-ap-southeast-2.amazonaws.com/andreigec/Music-File-Info-Editor/MFIE.png)
 
-![MFIE2](https://github.com/EvilSeven/Music-File-Info-Editor/raw/master/INFO/MFIE2.PNG)
+![MFIE2](https://s3-ap-southeast-2.amazonaws.com/andreigec/Music-File-Info-Editor/MFIE2.png)
