@@ -9,7 +9,7 @@
     <OutputType>WinExe</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>Music_File_Info_Editor</RootNamespace>
-    <AssemblyName>Music File Info Editor</AssemblyName>
+    <AssemblyName>Music-File-Info-Editor</AssemblyName>
     <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
     <FileUpgradeFlags>
     </FileUpgradeFlags>
